@@ -1,12 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 func main() {
 	fmt.Println("hi")
 
-	for nextMessage() {
-		handleMessage()
+    scanner := bufio.NewScanner(os.Stdin)
+
+	for scanner.Scan() {
+        msg := scanner.Text()
+        scanner.Split()
+		handleMessage(msg)
 	}
 }
 
