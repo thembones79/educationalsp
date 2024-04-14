@@ -49,8 +49,14 @@ func Split(data []byte, _ bool) (advance int, token []byte, err error) {
 	contentLengthBytes := header[len("Content-Length: "):]
 	contentLength, err := strconv.Atoi(string(contentLengthBytes))
 	if err != nil {
-		return "", nil, err
+		return 0, nil, err
 	}
 
-	return 0, nil, nil
+    if len(content) < contentLength {
+        return 0, nil, nil
+    }
+
+    totalLength := len(header) + 4 + contentLength
+
+    return totalLength, data[:totalLength], nil
 }

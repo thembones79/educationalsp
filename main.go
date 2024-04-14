@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+    "educationalsp/rpc"
 	"fmt"
 	"os"
 )
@@ -13,7 +14,7 @@ func main() {
 
 	for scanner.Scan() {
         msg := scanner.Text()
-        scanner.Split()
+        scanner.Split(rpc.Split)
 		handleMessage(msg)
 	}
 }
