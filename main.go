@@ -11,8 +11,8 @@ import (
 func main() {
 	fmt.Println("hi")
 
-    logger := getLogger("/home/michu/Projects/go/educationalsp/log.txt")
-    logger.Print("Hey, I started")
+	logger := getLogger("/home/michu/Projects/go/educationalsp/log.txt")
+	logger.Print("Hey, I started")
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Split(rpc.Split)
 
