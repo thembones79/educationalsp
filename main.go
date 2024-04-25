@@ -17,14 +17,18 @@ func main() {
 	scanner.Split(rpc.Split)
 
 	for scanner.Scan() {
-		msg := scanner.Text()
+		msg := scanner.Bytes()
+        method, content, err := rpc.DecodeMessage(msg)
+        if err != nil {
+            logger.Printf("Got an error: %s", err)
+        }
 		scanner.Split(rpc.Split)
 		handleMessage(logger,msg)
 	}
 }
 
 func handleMessage(logger *log.Logger,msg  any) {
-    :
+    logger.Println(msg)
 }
 
 func getLogger(filename string) *log.Logger {
